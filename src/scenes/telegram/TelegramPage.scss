@@ -1,0 +1,191 @@
+$softGray: #aaaaaa;
+$backgroundDark: #212121;
+$backgroundBlack: #181818;
+$corporateLilla: #8774e1;
+
+.telegram-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  max-width: 1680px;
+  width: 100%;
+}
+
+.sidebar {
+  width: 420px;
+  background-color: $backgroundDark;
+  color: white;
+  padding: 10px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.sidebar h2 {
+  margin: 0;
+  padding: 10px 0;
+  font-size: 18px;
+  border-bottom: 1px solid #3c3f42;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #3c3f42;
+  border-radius: 12px;
+  span {
+    color: white;
+    margin-right: 5px;
+  }
+}
+
+.sidebar li:hover {
+  background-color: #3c3f42;
+}
+
+.sidebar li.active {
+  background-color: $corporateLilla;
+
+  .chat-last-message {
+    color: white;
+  }
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+}
+
+.chat-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.chat-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-title {
+  font-weight: bold;
+  color: white;
+}
+
+.chat-last-message {
+  font-size: 13px;
+  color: $softGray;
+}
+
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #121212;
+  color: white;
+  max-width: 1080px;
+  background: url("/src/assets/telegrambg.jpg") no-repeat center center;
+  background-size: auto;
+}
+
+.messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.message {
+  display: flex;
+  align-items: flex-end;
+  margin: 10px 0;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.other {
+  justify-content: flex-start;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bubble-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 60%;
+}
+
+.username {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #ffa500;
+}
+
+.bubble {
+  padding: 10px;
+  border-radius: 14px;
+  background-color: $backgroundDark;
+  color: white;
+  text-align: left;
+}
+
+.message.user .bubble {
+  background-color: $corporateLilla;
+  color: white;
+}
+
+.input-area {
+  display: flex;
+  padding: 10px;
+  background-color: #2a2f32;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.input-area button {
+  background-color: #005c4b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-area button:hover {
+  background-color: #007b5e;
+}
