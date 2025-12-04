@@ -22,16 +22,12 @@ const Geostatic: React.FC = () => {
   return (
     <div className="geostatic-container">
       <div className="image-container">
-        <img
-          src="./src/assets/geostatic.jpg"
-          alt="Main"
-          className="geostatic"
-        />
+        <img src="./assets/geostatic.jpg" alt="Main" className="geostatic" />
         <div className="hover-area" onClick={handleClick}></div>
       </div>
       {showAdditionalImage && (
         <img
-          src="./src/assets/geostatic-ad.png"
+          src="./assets/geostatic-ad.png"
           alt="Additional"
           className="geostatic-ad"
           onClick={handleSecondImageClick}
@@ -42,7 +38,7 @@ const Geostatic: React.FC = () => {
           <video
             width="560"
             height="315"
-            src="./src/assets/orologio.mp4"
+            src="./assets/orologio.mp4"
             controls
             onEnded={handleVideoEnd}
           ></video>

@@ -15,7 +15,7 @@ const GeostaticGuess: React.FC = () => {
   return (
     <div className="image-carousel">
       <img
-        src={`./src/assets/geostatic-${currentImage}.jpg`}
+        src={`./assets/geostatic-${currentImage}.jpg`}
         alt={`Geostatic ${currentImage}`}
         className="carousel-image"
       />
