@@ -16,7 +16,7 @@ const Geostatic: React.FC = () => {
   };
 
   const handleVideoEnd = () => {
-    navigate("/3");
+    navigate("/geostatic-2");
   };
 
   return (

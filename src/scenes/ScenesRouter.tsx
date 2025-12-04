@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import TelegramPage from "./telegram/Telegram";
 import Geostatic from "./geostatic/Geostatic";
+import GeostaticGuess from "./geostatic/GeostaticGuess";
 
 const ScenesRouter: React.FC = () => {
   return (
@@ -15,7 +16,8 @@ const ScenesRouter: React.FC = () => {
         <Route path="/" element={<Navigate to="/1" replace />} />
         {/* Render TelegramPage for /1, /2, and /3 */}
         <Route path="/1" element={<TelegramPage />} />
-        <Route path="/2" element={<Geostatic />} />
+        <Route path="/geostatic" element={<Geostatic />} />
+        <Route path="/geostatic-2" element={<GeostaticGuess />} />
         <Route path="/3" element={<TelegramPage />} />
       </Routes>
     </Router>
