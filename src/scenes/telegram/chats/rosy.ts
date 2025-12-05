@@ -1,11 +1,10 @@
-export interface ChatMessage {
-  user: string;
-  message: string;
-}
-
-export const rosy: ChatMessage[] = [
-  {
-    user: "Rosy",
-    message: "Hello! This is Rosy's chat.",
-  },
-];
+export const rosy = {
+  name: "Rosy <3",
+  image: "/assets/rosy.jpg",
+  messages: [
+    {
+      user: "Rosy",
+      message: "Hello! This is Rosy's chat.",
+    },
+  ],
+};

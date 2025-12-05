@@ -11,11 +11,17 @@ interface ChatProps {
 export const Chat = ({ chats, setChats, currentChat }: ChatProps) => {
   const [input, setInput] = useState("");
   const [pendingMessages, setPendingMessages] = useState(
-    chats[currentChat].slice(1) // Start with all messages except the first one
+    chats[currentChat].messages.slice(1) // Start with all messages except the first one
   );
   const [displayedMessages, setDisplayedMessages] = useState([
-    chats[currentChat][0], // Start with the first message
+    chats[currentChat].messages[0], // Start with the first message
   ]);
+
+  // Reset messages when the currentChat changes
+  useEffect(() => {
+    setPendingMessages(chats[currentChat].messages.slice(1));
+    setDisplayedMessages([chats[currentChat].messages[0]]);
+  }, [currentChat, chats]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,22 +37,16 @@ export const Chat = ({ chats, setChats, currentChat }: ChatProps) => {
 
   const sendMessage = () => {
     if (input.trim()) {
-      setDisplayedMessages((prev) => [
-        ...prev,
-        { user: "You", message: input },
-      ]);
-      setChats({
-        ...chats,
-        [currentChat]: [...displayedMessages, { user: "You", message: input }],
-      });
+      const newMessage = { user: "You", message: input };
+      setDisplayedMessages((prev) => [...prev, newMessage]);
+      setChats((prevChats) => ({
+        ...prevChats,
+        [currentChat]: {
+          ...prevChats[currentChat],
+          messages: [...prevChats[currentChat].messages, newMessage],
+        },
+      }));
       setInput("");
-
-      // Show the next pending message immediately
-      if (pendingMessages.length > 0) {
-        const nextMessage = pendingMessages[0];
-        setDisplayedMessages((prev) => [...prev, nextMessage]);
-        setPendingMessages((prev) => prev.slice(1));
-      }
     }
   };
 

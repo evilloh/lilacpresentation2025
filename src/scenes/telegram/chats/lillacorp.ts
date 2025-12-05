@@ -3,9 +3,13 @@ export interface ChatMessage {
   message: string;
 }
 
-export const lillacorp: ChatMessage[] = [
-  {
-    user: "Miso",
-    message: "Ciao a tutti! Beassssss.",
-  },
-];
+export const lillacorp = {
+  name: "LillaCorp - UnLillaCorps",
+  image: "/assets/lillacorplogo.jpg",
+  messages: [
+    {
+      user: "Miso",
+      message: "Ciao a tutti! Beassssss.",
+    },
+  ],
+};
