@@ -9,6 +9,31 @@ $corporateLilla: #8774e1;
   font-family: Arial, sans-serif;
   max-width: 1680px;
   width: 100%;
+
+  &.chat-open {
+    .sidebar {
+      display: none;
+    }
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+}
+
+// Apply the `chat-open` behavior only on small screens
+@media (min-width: 769px) {
+  .telegram-container.chat-open {
+    .sidebar {
+      display: block; // Ensure the sidebar is always visible on larger screens
+    }
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      width: calc(100% - 420px); // Sidebar width is 420px
+    }
+  }
 }
 
 .sidebar {
@@ -56,6 +81,36 @@ $corporateLilla: #8774e1;
   .chat-last-message {
     color: white;
   }
+}
+
+.chat-container {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #2a2f32;
+  color: white;
+  border-bottom: 1px solid #3c3f42;
+}
+
+.chat-header .back-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.chat-header .chat-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 auto;
 }
 
 .chat-item {
@@ -188,4 +243,25 @@ $corporateLilla: #8774e1;
 
 .input-area button:hover {
   background-color: #007b5e;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  .search-box {
+    display: flex;
+    align-items: center;
+    background: $backgroundBlack;
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    flex: 1;
+    height: 30px;
+    p {
+      color: $softGray;
+      margin-left: 5px;
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+    }
+  }
 }

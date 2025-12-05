@@ -5,13 +5,10 @@ const SearchBar: React.FC = () => {
   return (
     <div className="search-bar">
       <MenuOutlinedIcon />
-      <SearchIcon />
-      <input
-        type="text"
-        className="search-input"
-        placeholder="Search"
-        disabled
-      />
+      <div className="search-box">
+        <SearchIcon />
+        <p>Search</p>
+      </div>
     </div>
   );
 };

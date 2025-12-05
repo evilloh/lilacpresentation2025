@@ -11,6 +11,7 @@ interface TelegramPageProps {
   rosy: ChatsI["rosy"];
   stories: Story[];
 }
+
 const TelegramPage: React.FC<TelegramPageProps> = ({
   lillaChannel,
   lillaCorp,
@@ -32,23 +33,43 @@ const TelegramPage: React.FC<TelegramPageProps> = ({
       return acc;
     }, {} as Record<keyof ChatsI, { displayedMessages: any[]; pendingMessages: any[] }>)
   );
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
+  const openChat = (chatKey: keyof ChatsI) => {
+    setCurrentChat(chatKey);
+    setIsChatOpen(true);
+  };
+
+  const closeChat = () => {
+    setIsChatOpen(false);
+  };
 
   return (
-    <div className="telegram-container">
+    <div className={`telegram-container ${isChatOpen ? "chat-open" : ""}`}>
       <Sidebar
         chats={chats}
         currentChat={currentChat}
-        setCurrentChat={setCurrentChat}
+        setCurrentChat={openChat}
         chatStates={chatStates}
         stories={stories}
       />
-      <Chat
-        chats={chats}
-        setChats={setChats}
-        currentChat={currentChat}
-        chatStates={chatStates}
-        setChatStates={setChatStates}
-      />
+      <div className="chat-container">
+        {isChatOpen && (
+          <div className="chat-header">
+            <button className="back-button" onClick={closeChat}>
+              &#8592; Back
+            </button>
+            <h2 className="chat-title">{chats[currentChat].name}</h2>
+          </div>
+        )}
+        <Chat
+          chats={chats}
+          setChats={setChats}
+          currentChat={currentChat}
+          chatStates={chatStates}
+          setChatStates={setChatStates}
+        />
+      </div>
     </div>
   );
 };
