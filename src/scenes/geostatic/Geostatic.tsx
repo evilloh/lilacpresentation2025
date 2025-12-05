@@ -5,6 +5,7 @@ import "./Geostatic.scss";
 const Geostatic: React.FC = () => {
   const [showAdditionalImage, setShowAdditionalImage] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
+
   const navigate = useNavigate();
 
   const handleClick = () => {
