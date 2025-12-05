@@ -1,26 +1,34 @@
 import type { ChatsI } from "../../../shared/interfaces";
 import SearchBar from "./SearchBar";
-import Stories from "./stories/Stories";
+import Stories, { type Story } from "./stories/Stories";
 
 interface SidebarProps {
   chats: ChatsI;
   currentChat: keyof ChatsI;
   setCurrentChat: (chat: keyof ChatsI) => void;
+  chatStates: Record<
+    keyof ChatsI,
+    { displayedMessages: any[]; pendingMessages: any[] }
+  >;
+  stories: Story[];
 }
 
 export const Sidebar = ({
   chats,
   currentChat,
   setCurrentChat,
+  chatStates,
+  stories,
 }: SidebarProps) => {
   return (
     <div className="sidebar">
       <SearchBar />
-      <Stories />
+      <Stories stories={stories} />
       <ul>
         {Object.keys(chats).map((chatKey) => {
           const chat = chats[chatKey];
-          const lastMessage = chat.messages[chat.messages.length - 1];
+          const lastMessage =
+            chatStates[chatKey as keyof ChatsI].displayedMessages.at(-1);
           return (
             <li
               key={chatKey}

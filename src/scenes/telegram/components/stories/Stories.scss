@@ -7,6 +7,12 @@
   border: 2px solid #4caf50;
   cursor: pointer;
   flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Ensures the image fits the circle container
+  }
 }
 
 .story-modal {
@@ -15,7 +21,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  // max-width: 1200px;
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
@@ -23,11 +28,17 @@
 }
 
 .story-modal-content {
-  max-width: 80%;
+  max-width: 100%; // Ensures the image doesn't overflow horizontally
   max-height: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  img {
+    width: 100%; // Makes the image responsive to the screen width
+    height: auto; // Maintains the aspect ratio
+    object-fit: contain; // Ensures the image fits within the modal
+  }
 }
 
 .stories {

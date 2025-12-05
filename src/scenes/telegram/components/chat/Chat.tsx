@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import type { ChatsI } from "../../../../shared/interfaces";
 import { userImages } from "../../../../shared/constants";
 
@@ -10,35 +10,75 @@ interface ChatProps {
 
 export const Chat = ({ chats, setChats, currentChat }: ChatProps) => {
   const [input, setInput] = useState("");
-  const [pendingMessages, setPendingMessages] = useState(
-    chats[currentChat].messages.slice(1) // Start with all messages except the first one
+  const [chatStates, setChatStates] = useState(() =>
+    Object.keys(chats).reduce((acc, chatKey) => {
+      acc[chatKey] = {
+        displayedMessages: [chats[chatKey as keyof ChatsI].messages[0]],
+        pendingMessages: chats[chatKey as keyof ChatsI].messages.slice(1),
+      };
+      return acc;
+    }, {} as Record<keyof ChatsI, { displayedMessages: any[]; pendingMessages: any[] }>)
   );
-  const [displayedMessages, setDisplayedMessages] = useState([
-    chats[currentChat].messages[0], // Start with the first message
-  ]);
 
-  // Reset messages when the currentChat changes
-  useEffect(() => {
-    setPendingMessages(chats[currentChat].messages.slice(1));
-    setDisplayedMessages([chats[currentChat].messages[0]]);
-  }, [currentChat, chats]);
+  const intervalRef = useRef(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (pendingMessages.length > 0) {
-        const nextMessage = pendingMessages[0];
-        setDisplayedMessages((prev) => [...prev, nextMessage]);
-        setPendingMessages((prev) => prev.slice(1));
+    // Clear any existing interval when switching chats
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    // Set up a new interval for the current chat
+    const updateMessages = () => {
+      setChatStates((prevStates) => {
+        const currentState = prevStates[currentChat];
+        if (currentState.pendingMessages.length > 0) {
+          const nextMessage = currentState.pendingMessages[0];
+          return {
+            ...prevStates,
+            [currentChat]: {
+              displayedMessages: [
+                ...currentState.displayedMessages,
+                nextMessage,
+              ],
+              pendingMessages: currentState.pendingMessages.slice(1),
+            },
+          };
+        }
+        return prevStates;
+      });
+    };
+
+    const randomInterval = () => Math.floor(Math.random() * 5000) + 1000; // Random interval between 1 and 5 seconds
+    const setRandomInterval = () => {
+      intervalRef.current = setTimeout(() => {
+        updateMessages();
+        setRandomInterval();
+      }, randomInterval());
+    };
+
+    setRandomInterval();
+
+    return () => {
+      if (intervalRef.current) {
+        clearTimeout(intervalRef.current);
       }
-    }, 2000);
-
-    return () => clearInterval(interval); // Cleanup interval on unmount
-  }, [pendingMessages]);
+    };
+  }, [currentChat]);
 
   const sendMessage = () => {
     if (input.trim()) {
       const newMessage = { user: "You", message: input };
-      setDisplayedMessages((prev) => [...prev, newMessage]);
+      setChatStates((prevStates) => ({
+        ...prevStates,
+        [currentChat]: {
+          ...prevStates[currentChat],
+          displayedMessages: [
+            ...prevStates[currentChat].displayedMessages,
+            newMessage,
+          ],
+        },
+      }));
       setChats((prevChats) => ({
         ...prevChats,
         [currentChat]: {
@@ -59,7 +99,7 @@ export const Chat = ({ chats, setChats, currentChat }: ChatProps) => {
   return (
     <div className="chat-area">
       <div className="messages">
-        {displayedMessages.map(
+        {chatStates[currentChat].displayedMessages.map(
           (msg: { user: string; message: string }, index: number) => (
             <div
               key={index}
