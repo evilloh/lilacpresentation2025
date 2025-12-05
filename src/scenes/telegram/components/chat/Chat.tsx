@@ -6,29 +6,32 @@ interface ChatProps {
   chats: ChatsI;
   setChats: React.Dispatch<React.SetStateAction<ChatsI>>;
   currentChat: keyof ChatsI;
+  chatStates: Record<
+    keyof ChatsI,
+    { displayedMessages: any[]; pendingMessages: any[] }
+  >;
+  setChatStates: React.Dispatch<
+    React.SetStateAction<
+      Record<keyof ChatsI, { displayedMessages: any[]; pendingMessages: any[] }>
+    >
+  >;
 }
 
-export const Chat = ({ chats, setChats, currentChat }: ChatProps) => {
+export const Chat = ({
+  setChats,
+  currentChat,
+  chatStates,
+  setChatStates,
+}: ChatProps) => {
   const [input, setInput] = useState("");
-  const [chatStates, setChatStates] = useState(() =>
-    Object.keys(chats).reduce((acc, chatKey) => {
-      acc[chatKey] = {
-        displayedMessages: [chats[chatKey as keyof ChatsI].messages[0]],
-        pendingMessages: chats[chatKey as keyof ChatsI].messages.slice(1),
-      };
-      return acc;
-    }, {} as Record<keyof ChatsI, { displayedMessages: any[]; pendingMessages: any[] }>)
-  );
 
   const intervalRef = useRef(null);
 
   useEffect(() => {
-    // Clear any existing interval when switching chats
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
 
-    // Set up a new interval for the current chat
     const updateMessages = () => {
       setChatStates((prevStates) => {
         const currentState = prevStates[currentChat];
@@ -49,7 +52,7 @@ export const Chat = ({ chats, setChats, currentChat }: ChatProps) => {
       });
     };
 
-    const randomInterval = () => Math.floor(Math.random() * 5000) + 1000; // Random interval between 1 and 5 seconds
+    const randomInterval = () => Math.floor(Math.random() * 3000) + 1000; // Random interval between 1 and 5 seconds
     const setRandomInterval = () => {
       intervalRef.current = setTimeout(() => {
         updateMessages();
