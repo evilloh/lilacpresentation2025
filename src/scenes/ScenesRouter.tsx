@@ -11,6 +11,7 @@ import { lillaChannel } from "./telegram/chats/scene1/lillaChannel";
 import { lillacorp } from "./telegram/chats/scene1/lillacorp";
 import { rosy } from "./telegram/chats/scene1/rosy";
 import { stories1 } from "./telegram/chats/scene1/stories";
+import Lab from "./lab/Lab";
 
 const ScenesRouter: React.FC = () => {
   return (
@@ -30,6 +31,8 @@ const ScenesRouter: React.FC = () => {
         />
         <Route path="/geostatic" element={<Geostatic />} />
         <Route path="/geostatic-2" element={<GeostaticGuess />} />
+        <Route path="/lab" element={<Lab />} />
+
         <Route
           path="/3"
           element={

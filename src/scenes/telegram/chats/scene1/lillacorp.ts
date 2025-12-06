@@ -9,7 +9,8 @@ export const lillacorp = {
   messages: [
     {
       user: "Miso",
-      message: "Ciao a tutti! Beassssss.",
+      message:
+        "<a href='/lab' style='text-decoration: none; color: inherit;'><div style={{display: flex}}> <div>Hey team, check out this concept art for our new project!</div><img src='/assets/ilpost.jpg' alt='Miso Image 1' style='width: 100%;'/></div></a>",
     },
   ],
 };

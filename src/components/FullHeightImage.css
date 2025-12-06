@@ -1,0 +1,14 @@
+/* FullHeightImage.css */
+
+.full-height-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: white;
+}
+
+.full-height-image {
+  max-height: 100%;
+  max-width: 100%;
+}

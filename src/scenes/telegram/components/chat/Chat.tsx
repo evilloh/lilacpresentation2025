@@ -127,7 +127,7 @@ export const Chat = ({
                   {msg.user !== "You" && (
                     <div className="username">{msg.user}</div>
                   )}
-                  {msg.message}
+                  <p dangerouslySetInnerHTML={{ __html: msg.message }}></p>
                 </div>
               </div>
             </div>
