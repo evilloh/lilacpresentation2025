@@ -20,6 +20,11 @@ export const Sidebar = ({
   chatStates,
   stories,
 }: SidebarProps) => {
+  const getMessagePreview = (message: string) => {
+    const match = message.match(/<p>(.*?)<\/p>/);
+    return match ? match[1] : message;
+  };
+
   return (
     <div className="sidebar">
       <SearchBar />
@@ -45,7 +50,7 @@ export const Sidebar = ({
                     {lastMessage ? (
                       <>
                         <span>{lastMessage.user}:</span>
-                        {lastMessage.message}
+                        {getMessagePreview(lastMessage.message)}
                       </>
                     ) : (
                       "No messages yet"

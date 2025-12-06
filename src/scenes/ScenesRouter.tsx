@@ -44,6 +44,17 @@ const ScenesRouter: React.FC = () => {
             />
           }
         />
+        <Route
+          path="/4"
+          element={
+            <TelegramPage
+              lillaChannel={lillaChannel}
+              lillaCorp={lillacorp}
+              rosy={rosy}
+              stories={[]}
+            />
+          }
+        />
       </Routes>
     </Router>
   );
