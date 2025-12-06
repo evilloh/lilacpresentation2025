@@ -15,7 +15,6 @@ class LabScene extends Phaser.Scene {
   }
 
   preload(): void {
-    // Load assets
     this.load.image("laboratory", "/assets/laboratory.jpg");
     this.load.image("sonrisitas", "/assets/sonrisitas.png");
     this.load.audio("sorry1", "/assets/sorry1.mp3");
@@ -26,37 +25,16 @@ class LabScene extends Phaser.Scene {
   create() {
     const { width, height } = this.scale;
 
-    // 1. Setup Container for Background + Click Zones
     this.labContainer = this.add.container(0, 0);
 
-    // 2. Setup Background Image inside Container
-    // We use origin (0,0) so coordinates match the image pixels exactly
     this.bg = this.add.image(0, 0, "laboratory").setOrigin(0, 0);
     this.labContainer.add(this.bg);
 
-    // 3. Fit the container to the screen
     this.fitContainer(width, height);
 
-    // Handle window resize
     this.scale.on("resize", (gameSize: Phaser.Structs.Size) => {
       this.fitContainer(gameSize.width, gameSize.height);
     });
-
-    // 4. DEBUG TOOL: Log IMAGE coordinates
-    // Open Developer Tools (F12) -> Console. Click on the image to see x,y relative to the image.
-    this.bg.setInteractive();
-    this.bg.on(
-      "pointerdown",
-      (pointer: Phaser.Input.Pointer, localX: number, localY: number) => {
-        console.log(
-          `Image Coordinates: x=${Math.round(localX)}, y=${Math.round(localY)}`
-        );
-      }
-    );
-
-    // 5. DEFINE CLICKABLE AREAS HERE
-    // IMPORTANT: You need to update these points using the new "Image Coordinates" from the console.
-    // The current points are likely screen coordinates and will need to be re-done.
 
     const points = [
       { x: 363, y: 468 },
@@ -79,33 +57,28 @@ class LabScene extends Phaser.Scene {
     this.createClickablePolygon(points);
   }
 
-  // Helper to scale and center the container to cover the screen
   fitContainer(width: number, height: number) {
     if (!this.bg) return;
 
     const imgWidth = this.bg.width;
     const imgHeight = this.bg.height;
 
-    // Calculate scale to cover
     const scaleX = width / imgWidth;
     const scaleY = height / imgHeight;
     const scale = Math.max(scaleX, scaleY);
 
     this.labContainer.setScale(scale);
 
-    // Center the container
     const x = (width - imgWidth * scale) / 2;
     const y = (height - imgHeight * scale) / 2;
 
     this.labContainer.setPosition(x, y);
   }
 
-  // Helper to create invisible clickable polygon inside the container
   createClickablePolygon(points: { x: number; y: number }[]) {
     const polygon = new Phaser.Geom.Polygon(points);
 
     const graphics = this.add.graphics();
-    // Set alpha to 0.5 to debug the shape, 0.0 to make it invisible
     graphics.fillStyle(0x00ff00, 0.0);
     graphics.fillPoints(polygon.points, true);
 
@@ -119,9 +92,7 @@ class LabScene extends Phaser.Scene {
     this.labContainer.add(graphics);
   }
 
-  // Helper to create invisible clickable zones inside the container
   createClickableArea(x: number, y: number, w: number, h: number) {
-    // The last parameter (0.0) is alpha. Change to 0.5 to see the red box for debugging.
     const zone = this.add.rectangle(x, y, w, h, 0xff0000, 0.0);
     zone.setInteractive({ useHandCursor: true });
 
@@ -129,7 +100,6 @@ class LabScene extends Phaser.Scene {
       this.handleInteraction(pointer.x, pointer.y);
     });
 
-    // Add to container so it moves/scales with the background
     this.labContainer.add(zone);
   }
 
