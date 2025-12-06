@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./TelegramPage.scss";
 import { Sidebar } from "./components/Sidebar";
 import { Chat } from "./components/chat/Chat";
@@ -43,6 +43,12 @@ const TelegramPage: React.FC<TelegramPageProps> = ({
   const closeChat = () => {
     setIsChatOpen(false);
   };
+
+  useEffect(() => {
+    if (!isChatOpen) {
+      openChat("lillaChannel");
+    }
+  }, [isChatOpen]);
 
   return (
     <div className={`telegram-container ${isChatOpen ? "chat-open" : ""}`}>

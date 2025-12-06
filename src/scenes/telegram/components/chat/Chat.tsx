@@ -25,7 +25,7 @@ export const Chat = ({
 }: ChatProps) => {
   const [input, setInput] = useState("");
 
-  const intervalRef = useRef(null);
+  const intervalRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (intervalRef.current) {
@@ -98,6 +98,8 @@ export const Chat = ({
       sendMessage();
     }
   };
+
+  console.log(chatStates);
 
   return (
     <div className="chat-area">
