@@ -165,19 +165,27 @@ const Lab: React.FC = () => {
   const navigate = useNavigate();
   const [showInitialImage, setShowInitialImage] = useState(true);
   const [startDisappearing, setStartDisappearing] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
 
   const handleImageClick = () => {
-    setStartDisappearing(true);
+    if (!startDisappearing) {
+      setStartDisappearing(true);
+    }
   };
 
   useEffect(() => {
     if (startDisappearing) {
       const timer = setTimeout(() => {
-        setShowInitialImage(false); // Remove the image after the animation
-      }, 5000); // Match the duration of the animation
+        setShowVideo(true);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [startDisappearing]);
+
+  const handleVideoEnd = () => {
+    setShowVideo(false);
+    setShowInitialImage(false);
+  };
 
   // Initialize Phaser when the initial image is gone
   useEffect(() => {
@@ -211,18 +219,31 @@ const Lab: React.FC = () => {
   return (
     <div className="lab-scene">
       {showInitialImage ? (
-        <div
-          className={`full-height-image-container ${
-            startDisappearing ? "disappear" : ""
-          }`}
-        >
-          <img
-            src="/assets/ilpostfull.jpg"
-            alt="Full Height"
-            className="full-height-image"
-            onClick={handleImageClick}
-          />
-        </div>
+        <>
+          <div
+            className={`full-height-image-container ${
+              startDisappearing ? "disappear" : ""
+            }`}
+          >
+            <img
+              src="/assets/ilpostfull.jpg"
+              alt="Full Height"
+              className="full-height-image"
+              onClick={handleImageClick}
+            />
+          </div>
+          {showVideo && (
+            <div className="video-container disappear">
+              <h1>In a different time...</h1>
+              <video
+                src="/assets/timeTravel.mp4"
+                className="intro-video disappear"
+                autoPlay
+                onEnded={handleVideoEnd}
+              />
+            </div>
+          )}
+        </>
       ) : (
         <div id="phaser-lab-container"></div>
       )}
