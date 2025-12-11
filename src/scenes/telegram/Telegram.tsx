@@ -9,6 +9,7 @@ interface TelegramPageProps {
   lillaChannel: ChatsI["lillaChannel"];
   lillaCorp: ChatsI["lillaCorp"];
   rosy: ChatsI["rosy"];
+  evilloh: ChatsI["evilloh"];
   stories: Story[];
 }
 
@@ -17,11 +18,13 @@ const TelegramPage: React.FC<TelegramPageProps> = ({
   lillaCorp,
   rosy,
   stories,
-}) => {
+  evilloh,
+}: TelegramPageProps) => {
   const [chats, setChats] = useState<ChatsI>({
     lillaChannel: lillaChannel,
     lillaCorp: lillaCorp,
     rosy: rosy,
+    evilloh: evilloh,
   });
   const [currentChat, setCurrentChat] = useState<keyof ChatsI>("lillaChannel");
   const [chatStates, setChatStates] = useState(() =>

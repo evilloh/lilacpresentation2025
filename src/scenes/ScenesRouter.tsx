@@ -10,6 +10,7 @@ import GeostaticGuess from "./geostatic/GeostaticGuess";
 import { lillaChannel } from "./telegram/chats/scene1/lillaChannel";
 import { lillacorp } from "./telegram/chats/scene1/lillacorp";
 import { rosy } from "./telegram/chats/scene1/rosy";
+import { evilloh } from "./telegram/chats/scene1/evilloh";
 import { stories1 } from "./telegram/chats/scene1/stories";
 import Lab from "./lab/Lab";
 
@@ -26,6 +27,7 @@ const ScenesRouter: React.FC = () => {
               lillaCorp={lillacorp}
               rosy={rosy}
               stories={stories1}
+              evilloh={evilloh}
             />
           }
         />
