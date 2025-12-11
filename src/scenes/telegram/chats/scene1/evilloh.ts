@@ -58,7 +58,7 @@ export const evilloh = {
     {
       user: "evilloh",
       message:
-        "<div style={{display: flex}}><img src='/assets/mtgcombo1.png' alt='mtg' style='width: 100%;'/></div>",
+        "<div style={{display: flex}}><p></p><img src='/assets/mtgcombo1.png' alt='mtg' style='width: 100%;'/></div>",
     },
     {
       user: "carlo",
@@ -67,7 +67,7 @@ export const evilloh = {
     {
       user: "evilloh",
       message:
-        "<div style={{display: flex}}><img src='/assets/mtg3.jpg' alt='mtg' style='width: 100%;'/><img src='/assets/mtg4.jpg' alt='mtg' style='width: 100%;'/></div>",
+        "<div style={{display: flex}}><p></p><img src='/assets/mtg3.jpg' alt='mtg' style='width: 100%;'/><img src='/assets/mtg4.jpg' alt='mtg' style='width: 100%;'/></div>",
     },
     {
       user: "carlo",
@@ -76,7 +76,7 @@ export const evilloh = {
     {
       user: "evilloh",
       message:
-        "<div style={{display: flex}}><img src='/assets/mtg2.jpg' alt='mtg' style='width: 100%;'/><img src='/assets/mtg22.jpg' alt='mtg' style='width: 100%;'/></div>",
+        "<div style={{display: flex}}><p></p><img src='/assets/mtg2.jpg' alt='mtg' style='width: 100%;'/><img src='/assets/mtg22.jpg' alt='mtg' style='width: 100%;'/></div>",
     },
     {
       user: "carlo",
@@ -95,7 +95,7 @@ export const evilloh = {
     {
       user: "evilloh",
       message:
-        "<div style={{display: flex}}> <img src='/assets/mtg5.jpg' alt='mtg' style='width: 100%;'/></div>",
+        "<div style={{display: flex}}><p></p> <img src='/assets/mtg5.jpg' alt='mtg' style='width: 100%;'/></div>",
     },
   ],
 };
