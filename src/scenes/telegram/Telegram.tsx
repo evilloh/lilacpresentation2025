@@ -36,7 +36,7 @@ const TelegramPage: React.FC<TelegramPageProps> = ({
       return acc;
     }, {} as Record<keyof ChatsI, { displayedMessages: any[]; pendingMessages: any[] }>)
   );
-  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(true);
 
   const openChat = (chatKey: keyof ChatsI) => {
     setCurrentChat(chatKey);
@@ -46,12 +46,6 @@ const TelegramPage: React.FC<TelegramPageProps> = ({
   const closeChat = () => {
     setIsChatOpen(false);
   };
-
-  useEffect(() => {
-    if (!isChatOpen) {
-      openChat("lillaChannel");
-    }
-  }, [isChatOpen]);
 
   return (
     <div className={`telegram-container ${isChatOpen ? "chat-open" : ""}`}>
