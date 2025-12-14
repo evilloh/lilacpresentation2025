@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./TelegramPage.scss";
 import { Sidebar } from "./components/Sidebar";
 import { Chat } from "./components/chat/Chat";
@@ -8,9 +8,9 @@ import type { Story } from "./components/stories/Stories";
 interface TelegramPageProps {
   lillaChannel: ChatsI["lillaChannel"];
   lillaCorp: ChatsI["lillaCorp"];
-  rosy: ChatsI["rosy"];
-  evilloh: ChatsI["evilloh"];
-  stories: Story[];
+  rosy?: ChatsI["rosy"];
+  evilloh?: ChatsI["evilloh"];
+  stories?: Story[];
 }
 
 const TelegramPage: React.FC<TelegramPageProps> = ({
@@ -20,7 +20,7 @@ const TelegramPage: React.FC<TelegramPageProps> = ({
   stories,
   evilloh,
 }: TelegramPageProps) => {
-  const [chats, setChats] = useState<ChatsI>({
+  const [chats, setChats] = useState<Partial<ChatsI>>({
     lillaChannel: lillaChannel,
     lillaCorp: lillaCorp,
     rosy: rosy,
@@ -30,8 +30,9 @@ const TelegramPage: React.FC<TelegramPageProps> = ({
   const [chatStates, setChatStates] = useState(() =>
     Object.keys(chats).reduce((acc, chatKey) => {
       acc[chatKey] = {
-        displayedMessages: [chats[chatKey as keyof ChatsI].messages[0]],
-        pendingMessages: chats[chatKey as keyof ChatsI].messages.slice(1),
+        displayedMessages: [chats[chatKey as keyof ChatsI]?.messages[0]],
+        pendingMessages:
+          chats[chatKey as keyof ChatsI]?.messages.slice(1) || [],
       };
       return acc;
     }, {} as Record<keyof ChatsI, { displayedMessages: any[]; pendingMessages: any[] }>)
@@ -62,11 +63,10 @@ const TelegramPage: React.FC<TelegramPageProps> = ({
             <button className="back-button" onClick={closeChat}>
               &#8592; Back
             </button>
-            <h2 className="chat-title">{chats[currentChat].name}</h2>
+            <h2 className="chat-title">{chats[currentChat]?.name}</h2>
           </div>
         )}
         <Chat
-          chats={chats}
           setChats={setChats}
           currentChat={currentChat}
           chatStates={chatStates}

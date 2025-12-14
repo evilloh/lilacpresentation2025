@@ -8,23 +8,9 @@ export const lillaChannel = {
   image: "/assets/lillachannel.jpg",
   messages: [
     {
-      user: "Visinoskij",
-      message:
-        "Ciao a tutti! Benvenuti nel canale ufficiale di Lilla Presentation 2025.",
-    },
-    {
-      user: "Miso",
-      message:
-        "Non vedo l'ora di condividere con voi tutte le novità e gli aggiornamenti sul nostro progetto!",
-    },
-    {
-      user: "evilloh",
-      message: "Ehi ragazzi, avete visto l'ultima demo? È pazzesca!",
-    },
-    {
       user: "evilloh",
       message:
-        "Sto lavorando su alcune funzionalità nuove che vi piaceranno sicuramente.",
+        "Mai più un Lilac presentation con Miso...non fa nulla. gli ho detto di scrivere in Canvas e mi scrive su telegram. porco dio",
     },
     {
       user: "PinottoPoppo",
@@ -35,9 +21,54 @@ export const lillaChannel = {
       message: "Vi ricordate del mio mese da poliglotta?",
     },
     {
-      user: "evilloh",
+      user: "Miso",
       message:
-        "Mai più un Lilac presentation con Miso...non fa nulla. gli ho detto di scrivere in Canvas e mi scrive su telegram. porco dio",
+        "Carlo, ma ti chiamano ancora l'Elton John dei rapporti incestuosi?",
+    },
+    {
+      user: "federico",
+      message:
+        "Han fatto un Humble Bundle molto carino con le nostre migliori partite e un backstage nel quale fan vedere un'antilope che ci guarda in adorazione",
+    },
+    {
+      user: "Miso",
+      message:
+        "Un influencer svedese ha fatto un video in cui mostra a dei passanti scene di videogiochi. Il passante deve capire se stan giocando dei menomanti mentali o meno.... ci hanno appena dato dei pro",
+    },
+    {
+      user: "matteo",
+      message:
+        "Non trovate che la parola coccodrillo suoni veramente bene? Coccodrillo....Coccodrillo...Coccodrillo...suona veramente bene",
+    },
+    {
+      user: "Pezzo",
+      message:
+        "Chi di voi mi aveva chiesto un parere sulla rivista Oftalmologi oggi?",
+    },
+    {
+      user: "matteo",
+      message: "Leggevo sul post che Carlo è la risposta italiana a Tinder",
+    },
+    {
+      user: "federico",
+      message: "Ma quindi a che ora powniamo il campo oggi?",
+    },
+    {
+      user: "matteo",
+      message: "In teoria adesso, tra cinque minuti",
+    },
+    {
+      user: "federico",
+      message:
+        "Ok allora salgo (EVILLOH SIGNIFICA CHE INIZIAMO TRA CINQUE MINUTI NON TRA MEZZ'ORA)",
+    },
+    {
+      user: "evilloh",
+      message: "A volte mi chiedo come ha resistito carlo tutti questi anni ",
+    },
+    {
+      user: "evilloh",
+      message: "<a href='/rematch'><p>Mi connetto</p></a>",
     },
   ],
 };

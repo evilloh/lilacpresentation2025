@@ -3,14 +3,14 @@ import SearchBar from "./SearchBar";
 import Stories, { type Story } from "./stories/Stories";
 
 interface SidebarProps {
-  chats: ChatsI;
+  chats: Partial<ChatsI>;
   currentChat: keyof ChatsI;
   setCurrentChat: (chat: keyof ChatsI) => void;
   chatStates: Record<
     keyof ChatsI,
     { displayedMessages: any[]; pendingMessages: any[] }
   >;
-  stories: Story[];
+  stories?: Story[];
 }
 
 export const Sidebar = ({
@@ -31,6 +31,7 @@ export const Sidebar = ({
       <Stories stories={stories} />
       <ul>
         {Object.keys(chats).map((chatKey) => {
+          if (!chats[chatKey]) return null;
           const chat = chats[chatKey];
           const lastMessage =
             chatStates[chatKey as keyof ChatsI].displayedMessages.at(-1);

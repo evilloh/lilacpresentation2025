@@ -1,6 +1,15 @@
 import type { Story } from "../../components/stories/Stories";
 
 export const stories1: Story[] = [
-  { id: 1, user: "matteo", image: "/assets/sample.png" },
-  { id: 2, user: "carlo", image: "/assets/sample.png" },
+  { id: 1, user: "matteo", image: "/assets/storym1.jpg" },
+];
+
+export const stories2: Story[] = [
+  { id: 2, user: "matteo", image: "/assets/maria2.jpg" },
+  { id: 3, user: "pezzo", image: "/assets/maria3.jpg" },
+];
+
+export const stories3: Story[] = [
+  { id: 4, user: "matteo", image: "/assets/maria4.jpg" },
+  { id: 5, user: "nata", image: "/assets/storyn1.jpg" },
 ];

@@ -8,9 +8,22 @@ export const lillacorp = {
   image: "/assets/lillacorplogo.jpg",
   messages: [
     {
-      user: "Miso",
+      user: "Pezzo",
+      message: "cats pls",
+    },
+    {
+      user: "evilloh",
       message:
-        "<a href='/lab' style='text-decoration: none; color: inherit;'><div style={{display: flex}}> <p>Raga guardate é uscito pure sul post. Qualche tempo fa é successo questo nel laboratorio... magari ha qualcosa a che vedere con le stranezze che stiamo vedendo in giro?</p><img src='/assets/ilpost.jpg' alt='Miso Image 1' style='width: 100%;'/></div></a>",
+        "<div style={{display: flex}}> <p></p><img src='/assets/cat1.jpg' alt='mtg' style='width: 100%;'/></div>",
+    },
+    {
+      user: "evilloh",
+      message:
+        "<div style={{display: flex}}> <p></p><img src='/assets/cat2.jpg' alt='mtg' style='width: 100%;'/></div>",
+    },
+    {
+      user: "Pezzo",
+      message: "more cats pls",
     },
   ],
 };

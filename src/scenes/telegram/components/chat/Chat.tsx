@@ -3,8 +3,7 @@ import type { ChatsI } from "../../../../shared/interfaces";
 import { userImages } from "../../../../shared/constants";
 
 interface ChatProps {
-  chats: ChatsI;
-  setChats: React.Dispatch<React.SetStateAction<ChatsI>>;
+  setChats: React.Dispatch<React.SetStateAction<Partial<ChatsI>>>;
   currentChat: keyof ChatsI;
   chatStates: Record<
     keyof ChatsI,
@@ -24,12 +23,35 @@ export const Chat = ({
   setChatStates,
 }: ChatProps) => {
   const [input, setInput] = useState("");
+  console.log(currentChat);
 
   const intervalRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (intervalRef.current) {
-      clearInterval(intervalRef.current);
+      clearTimeout(intervalRef.current);
+    }
+
+    const animatedChats = ["lillaChannel", "rosy", "evilloh"];
+
+    if (!animatedChats.includes(currentChat as string)) {
+      setChatStates((prevStates) => {
+        const currentState = prevStates[currentChat];
+        if (currentState.pendingMessages.length > 0) {
+          return {
+            ...prevStates,
+            [currentChat]: {
+              displayedMessages: [
+                ...currentState.displayedMessages,
+                ...currentState.pendingMessages,
+              ],
+              pendingMessages: [],
+            },
+          };
+        }
+        return prevStates;
+      });
+      return;
     }
 
     const updateMessages = () => {
@@ -82,13 +104,17 @@ export const Chat = ({
           ],
         },
       }));
-      setChats((prevChats) => ({
-        ...prevChats,
-        [currentChat]: {
-          ...prevChats[currentChat],
-          messages: [...prevChats[currentChat].messages, newMessage],
-        },
-      }));
+      setChats((prevChats) => {
+        const currentChatData = prevChats[currentChat];
+        if (!currentChatData) return prevChats;
+        return {
+          ...prevChats,
+          [currentChat]: {
+            ...currentChatData,
+            messages: [...(currentChatData.messages || []), newMessage],
+          },
+        };
+      });
       setInput("");
     }
   };
@@ -99,7 +125,7 @@ export const Chat = ({
     }
   };
 
-  console.log(chatStates);
+  console.log(currentChat);
 
   return (
     <div className="chat-area">
@@ -141,8 +167,18 @@ export const Chat = ({
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
           placeholder="Type a message..."
+          disabled={
+            !String(currentChat).toLocaleLowerCase().includes("lillacha")
+          }
         />
-        <button onClick={sendMessage}>Send</button>
+        <button
+          onClick={sendMessage}
+          disabled={
+            !String(currentChat).toLocaleLowerCase().includes("lillacha")
+          }
+        >
+          Send
+        </button>
       </div>
     </div>
   );

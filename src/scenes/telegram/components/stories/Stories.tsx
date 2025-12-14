@@ -11,7 +11,7 @@ export interface Story {
   image: string;
 }
 
-const Stories: React.FC<{ stories: Story[] }> = ({ stories }) => {
+const Stories: React.FC<{ stories?: Story[] }> = ({ stories }) => {
   const [selectedStory, setSelectedStory] = useState<string | null>(null);
 
   const openStory = (image: string) => {
@@ -25,7 +25,7 @@ const Stories: React.FC<{ stories: Story[] }> = ({ stories }) => {
   return (
     <div className="stories-container">
       <div className="stories">
-        {stories.map((story) => (
+        {stories?.map((story) => (
           <div
             key={story.id}
             className="story-circle"

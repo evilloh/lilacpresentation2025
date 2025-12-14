@@ -33,7 +33,7 @@ const GeostaticGuess: React.FC = () => {
   };
 
   const handleClose = () => {
-    navigate("/3");
+    navigate("/4");
   };
 
   return (
