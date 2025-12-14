@@ -26,7 +26,7 @@ export const lillaChannel = {
         "Carlo, ma ti chiamano ancora l'Elton John dei rapporti incestuosi?",
     },
     {
-      user: "federico",
+      user: "visinoskij",
       message:
         "Han fatto un Humble Bundle molto carino con le nostre migliori partite e un backstage nel quale fan vedere un'antilope che ci guarda in adorazione",
     },
@@ -50,7 +50,7 @@ export const lillaChannel = {
       message: "Leggevo sul post che Carlo è la risposta italiana a Tinder",
     },
     {
-      user: "federico",
+      user: "visinoskij",
       message: "Ma quindi a che ora powniamo il campo oggi?",
     },
     {
@@ -58,7 +58,7 @@ export const lillaChannel = {
       message: "In teoria adesso, tra cinque minuti",
     },
     {
-      user: "federico",
+      user: "visinoskij",
       message:
         "Ok allora salgo (EVILLOH SIGNIFICA CHE INIZIAMO TRA CINQUE MINUTI NON TRA MEZZ'ORA)",
     },
