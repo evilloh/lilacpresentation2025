@@ -15,6 +15,7 @@ import { evilloh } from "./telegram/chats/scene1/evilloh";
 import { stories1, stories2, stories3 } from "./telegram/chats/scene1/stories";
 import Lab from "./lab/Lab";
 import Rematch from "./rematch/Rematch";
+import LilacCarlo from "./lilacs/carlo/LilacCarlo";
 import { lillaChannel2 } from "./telegram/chats/scene1/lillaChannel2";
 import { lillaChannel3 } from "./telegram/chats/scene1/lillaChannel3";
 import { lillaChannel4 } from "./telegram/chats/scene1/lillaChannel4";
@@ -73,6 +74,7 @@ const ScenesRouter: React.FC = () => {
           }
         />
         <Route path="/lab" element={<Lab />} />
+        <Route path="/lilac_carlo" element={<LilacCarlo />} />
       </Routes>
     </Router>
   );
