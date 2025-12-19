@@ -20,6 +20,7 @@ import { lillaChannel2 } from "./telegram/chats/scene1/lillaChannel2";
 import { lillaChannel3 } from "./telegram/chats/scene1/lillaChannel3";
 import { lillaChannel4 } from "./telegram/chats/scene1/lillaChannel4";
 import { lillacorp2 } from "./telegram/chats/scene1/lillacorp2";
+import { lillaChannel5 } from "./telegram/chats/scene1/lillaChannel5";
 
 const ScenesRouter: React.FC = () => {
   return (
@@ -44,7 +45,6 @@ const ScenesRouter: React.FC = () => {
             <TelegramPage
               lillaChannel={lillaChannel2}
               lillaCorp={lillacorp2}
-              rosy={rosy}
               stories={stories1}
               evilloh={evilloh}
             />
@@ -75,6 +75,16 @@ const ScenesRouter: React.FC = () => {
         />
         <Route path="/lab" element={<Lab />} />
         <Route path="/lilac_carlo" element={<LilacCarlo />} />
+        <Route
+          path="/4"
+          element={
+            <TelegramPage
+              lillaChannel={lillaChannel5}
+              lillaCorp={lillacorp2}
+              stories={stories3}
+            />
+          }
+        />
       </Routes>
     </Router>
   );

@@ -3,14 +3,10 @@ export interface ChatMessage {
   message: string;
 }
 
-export const lillaChannel4 = {
+export const lillaChannel5 = {
   name: "LillaChannel",
   image: "/assets/lillachannel.jpg",
   messages: [
-    {
-      user: "visinoskij",
-      message: "",
-    },
     {
       user: "visinoskij",
       message:

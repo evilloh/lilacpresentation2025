@@ -125,8 +125,6 @@ export const Chat = ({
     }
   };
 
-  console.log(currentChat);
-
   return (
     <div className="chat-area">
       <div className="messages">
