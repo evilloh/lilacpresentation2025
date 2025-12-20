@@ -45,7 +45,17 @@ const ScenesRouter: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/1" replace />} />
+        <Route
+          path="/"
+          element={
+            <TelegramPage
+              lillaChannel={lillaChannel}
+              lillaCorp={lillacorp}
+              rosy={rosy}
+              stories={stories1}
+            />
+          }
+        />
         <Route
           path="/1"
           element={
