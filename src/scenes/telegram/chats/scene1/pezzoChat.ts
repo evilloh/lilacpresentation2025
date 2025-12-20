@@ -1,5 +1,5 @@
 export const pezzoChat = {
-  name: "Pezzo2",
+  name: "Pezzo",
   image: "/assets/pezzo2.jpg",
   messages: [
     {

@@ -266,3 +266,70 @@ $corporateLilla: #8774e1;
     }
   }
 }
+
+.chat-area.disappear {
+  animation: fadeOut 5s forwards;
+}
+
+.video-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  h1 {
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  &.disappear {
+    animation: fadeOut 5s forwards;
+  }
+}
+
+.intro-video {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+
+  &.disappear {
+    animation: fadeOut 5s forwards;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0.25;
+  }
+  25% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.25;
+  }
+  55% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.25;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

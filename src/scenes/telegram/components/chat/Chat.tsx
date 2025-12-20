@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import type { ChatsI } from "../../../../shared/interfaces";
 import { userImages } from "../../../../shared/constants";
 
@@ -22,11 +23,15 @@ export const Chat = ({
   chatStates,
   setChatStates,
 }: ChatProps) => {
+  const navigate = useNavigate();
   const [input, setInput] = useState("");
+  const [showVideo, setShowVideo] = useState(false);
+  const [startDisappearing, setStartDisappearing] = useState(false);
 
   const intervalRef = useRef<number | null>(null);
 
   useEffect(() => {
+    setInput("");
     if (intervalRef.current) {
       clearTimeout(intervalRef.current);
     }
@@ -92,6 +97,14 @@ export const Chat = ({
 
   const sendMessage = () => {
     if (input.trim()) {
+      if (input.toLowerCase() === "hades" && currentChat === "pezzo") {
+        setStartDisappearing(true);
+        setTimeout(() => {
+          setShowVideo(true);
+        }, 1000);
+        setInput("");
+        return;
+      }
       const newMessage = { user: "You", message: input };
       setChatStates((prevStates) => ({
         ...prevStates,
@@ -124,8 +137,18 @@ export const Chat = ({
     }
   };
 
+  const handleVideoEnd = () => {
+    navigate("/6");
+  };
+
+  const isChatDisabled = () => {
+    const chatName = String(currentChat).toLowerCase();
+    return chatName !== "pezzo" && chatName !== "lillachannel";
+  };
+  console.log("chatStates", currentChat);
+
   return (
-    <div className="chat-area">
+    <div className={`chat-area ${startDisappearing ? "disappear" : ""}`}>
       <div className="messages">
         {chatStates[currentChat].displayedMessages.map(
           (msg: { user: string; message: string }, index: number) => (
@@ -168,19 +191,22 @@ export const Chat = ({
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
           placeholder="Type a message..."
-          disabled={
-            !String(currentChat).toLocaleLowerCase().includes("lillacha")
-          }
+          disabled={isChatDisabled()}
         />
-        <button
-          onClick={sendMessage}
-          disabled={
-            !String(currentChat).toLocaleLowerCase().includes("lillacha")
-          }
-        >
+        <button onClick={sendMessage} disabled={isChatDisabled()}>
           Send
         </button>
       </div>
+      {showVideo && (
+        <div className="video-container disappear">
+          <video
+            src="/assets/timeTravel.mp4"
+            className="intro-video disappear"
+            autoPlay
+            onEnded={handleVideoEnd}
+          />
+        </div>
+      )}
     </div>
   );
 };
