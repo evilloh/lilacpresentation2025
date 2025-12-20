@@ -145,7 +145,6 @@ export const Chat = ({
     const chatName = String(currentChat).toLowerCase();
     return chatName !== "pezzo" && chatName !== "lillachannel";
   };
-  console.log("chatStates", currentChat);
 
   return (
     <div className={`chat-area ${startDisappearing ? "disappear" : ""}`}>

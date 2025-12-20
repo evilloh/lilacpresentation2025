@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Stories.scss";
 
 const getUserImg = (user: string) => {
+  if (user === "sonrisitas") return "/assets/sonrisitasavatar.png";
   return `/assets/${user}.jpg`;
 };
 

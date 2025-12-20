@@ -75,7 +75,7 @@ export const lillaChannel5 = {
     {
       user: "pinottodos",
       message:
-        "'Dovete tornare indietro nel tempo e correggere dei crimen temporales che sono successi nei lilac dei vostri compagni per colpa dei lieviti che si sono immischiati nelle linee temporali. Grazie alla tecnologia del futuro vi diró come fare. Accedete al lilac di ognuno attraverso del comando /timeCrime, tornate in dietro, salvete la linea temporale e tornate qui per far si che la presentazione si possa completare in tempo.'</p> <br/> <p style={{fontStyle: 'italic'}}>PinottoPoppo Dos, Dec 2032</p> ",
+        "'Dovete tornare indietro nel tempo e correggere dei crimen temporales che sono successi nei lilac dei vostri compagni per colpa dei lieviti che si sono immischiati nelle linee temporali. Grazie alla tecnologia del futuro vi diró come fare. Accedete al lilac di ognuno attraverso del comando /timecrime, tornate in dietro, salvete la linea temporale e tornate qui per far si che la presentazione si possa completare in tempo.'</p> <br/> <p style={{fontStyle: 'italic'}}>PinottoPoppo Dos, Dec 2032</p> ",
     },
     {
       user: "miso",
@@ -128,7 +128,7 @@ export const lillaChannel5 = {
     },
     {
       user: "pezzo",
-      message: "<a href='/lilac_pezzo'><p>/timecrimes</p></a>",
+      message: "<a href='/lilac_pezzo'><p>/timecrime</p></a>",
     },
   ],
 };

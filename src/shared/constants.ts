@@ -10,4 +10,5 @@ export const userImages = {
   rosy: "/assets/rosy.jpg",
   pinottopoppo: "/assets/pinottopoppo.jpg",
   pinottodos: "/assets/pinottopoppo.jpg",
+  sonrisitas: "/assets/sonrisitasavatar.png",
 };

@@ -15,5 +15,9 @@ export const stories3: Story[] = [
 ];
 
 export const stories5: Story[] = [
-  { id: 5, user: "pezzo", image: "/assets/storyp1.jpg" },
+  { id: 6, user: "pezzo", image: "/assets/storyp1.jpg" },
+];
+
+export const storiesPezzo: Story[] = [
+  { id: 7, user: "sonrisitas", image: "/assets/sonrisitas_story.jpg" },
 ];

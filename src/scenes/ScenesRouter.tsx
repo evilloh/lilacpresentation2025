@@ -17,10 +17,12 @@ import {
   stories2,
   stories3,
   stories5,
+  storiesPezzo,
 } from "./telegram/chats/scene1/stories";
 import Lab from "./lab/Lab";
 import Rematch from "./rematch/Rematch";
 import LilacCarlo from "./lilacs/carlo/LilacCarlo";
+import LilacMisoEvilloh from "./lilacs/miso_evilloh/LilacMisoEvilloh";
 import { lillaChannel2 } from "./telegram/chats/scene1/lillaChannel2";
 import { lillaChannel3 } from "./telegram/chats/scene1/lillaChannel3";
 import { lillaChannel4 } from "./telegram/chats/scene1/lillaChannel4";
@@ -28,6 +30,8 @@ import { lillacorp2 } from "./telegram/chats/scene1/lillacorp2";
 import { lillaChannel5 } from "./telegram/chats/scene1/lillaChannel5";
 import { lillacorp3 } from "./telegram/chats/scene1/lillacorp3";
 import { pezzoChat } from "./telegram/chats/scene1/pezzoChat";
+import { lillaChannel6 } from "./telegram/chats/scene1/lillaChannel6";
+import { lillacorp4 } from "./telegram/chats/scene1/lillacorp4";
 
 const ScenesRouter: React.FC = () => {
   return (
@@ -94,8 +98,15 @@ const ScenesRouter: React.FC = () => {
         />
         <Route
           path="/lilac_pezzo"
-          element={<TelegramPage pezzo={pezzoChat} />}
+          element={<TelegramPage pezzo={pezzoChat} stories={storiesPezzo} />}
         />
+        <Route
+          path="/6"
+          element={
+            <TelegramPage lillaChannel={lillaChannel6} lillaCorp={lillacorp4} />
+          }
+        />
+        <Route path="/lilac_villo_miso" element={<LilacMisoEvilloh />} />
       </Routes>
     </Router>
   );
