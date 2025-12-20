@@ -5,7 +5,9 @@ export const userImages = {
   evilloh: "/assets/evilloh.jpg",
   matteo: "/assets/matteo.jpg",
   pezzo: "/assets/pezzo.jpg",
+  pezzo2: "/assets/pezzo2.jpg",
   nata: "/assets/nata.jpg",
   rosy: "/assets/rosy.jpg",
   pinottopoppo: "/assets/pinottopoppo.jpg",
+  pinottodos: "/assets/pinottopoppo.jpg",
 };

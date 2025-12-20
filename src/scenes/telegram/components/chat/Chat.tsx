@@ -23,7 +23,6 @@ export const Chat = ({
   setChatStates,
 }: ChatProps) => {
   const [input, setInput] = useState("");
-  console.log(currentChat);
 
   const intervalRef = useRef<number | null>(null);
 
@@ -32,7 +31,7 @@ export const Chat = ({
       clearTimeout(intervalRef.current);
     }
 
-    const animatedChats = ["lillaChannel", "rosy", "evilloh"];
+    const animatedChats = ["lillaChannel", "rosy", "evilloh", "pezzo"];
 
     if (!animatedChats.includes(currentChat as string)) {
       setChatStates((prevStates) => {
@@ -151,7 +150,9 @@ export const Chat = ({
               <div className="bubble-container">
                 <div className="bubble">
                   {msg.user.toLowerCase() !== "you" && (
-                    <div className="username">{msg.user}</div>
+                    <div className="username">
+                      {msg.user === "pezzo2" ? "Pezzo" : msg.user}
+                    </div>
                   )}
                   <p dangerouslySetInnerHTML={{ __html: msg.message }}></p>
                 </div>

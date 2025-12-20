@@ -6,11 +6,12 @@ import type { ChatsI } from "../../shared/interfaces";
 import type { Story } from "./components/stories/Stories";
 
 interface TelegramPageProps {
-  lillaChannel: ChatsI["lillaChannel"];
-  lillaCorp: ChatsI["lillaCorp"];
+  lillaChannel?: ChatsI["lillaChannel"];
+  lillaCorp?: ChatsI["lillaCorp"];
   rosy?: ChatsI["rosy"];
   evilloh?: ChatsI["evilloh"];
   stories?: Story[];
+  pezzo?: ChatsI["pezzo"];
 }
 
 const TelegramPage: React.FC<TelegramPageProps> = ({
@@ -19,14 +20,18 @@ const TelegramPage: React.FC<TelegramPageProps> = ({
   rosy,
   stories,
   evilloh,
+  pezzo,
 }: TelegramPageProps) => {
   const [chats, setChats] = useState<Partial<ChatsI>>({
     lillaChannel: lillaChannel,
     lillaCorp: lillaCorp,
     rosy: rosy,
     evilloh: evilloh,
+    pezzo: pezzo,
   });
-  const [currentChat, setCurrentChat] = useState<keyof ChatsI>("lillaChannel");
+  const [currentChat, setCurrentChat] = useState<keyof ChatsI>(
+    lillaChannel ? "lillaChannel" : "pezzo"
+  );
   const [chatStates, setChatStates] = useState(() =>
     Object.keys(chats).reduce((acc, chatKey) => {
       acc[chatKey] = {

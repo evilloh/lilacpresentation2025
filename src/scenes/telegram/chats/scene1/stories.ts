@@ -13,3 +13,7 @@ export const stories3: Story[] = [
   { id: 4, user: "matteo", image: "/assets/maria4.jpg" },
   { id: 5, user: "nata", image: "/assets/storyn1.jpg" },
 ];
+
+export const stories5: Story[] = [
+  { id: 5, user: "pezzo", image: "/assets/storyp1.jpg" },
+];
