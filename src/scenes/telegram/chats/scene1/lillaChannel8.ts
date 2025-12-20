@@ -11,5 +11,9 @@ export const lillaChannel8 = {
       user: "matteo",
       message: "<a href='/lilac_matteo'><p>/timecrime</p></a>",
     },
+    {
+      user: "nata",
+      message: "<a href='/lilac_nata'><p>/timecrime</p></a>",
+    },
   ],
 };
