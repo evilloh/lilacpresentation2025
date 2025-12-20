@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./TelegramPage.scss";
 import { Sidebar } from "./components/Sidebar";
 import { Chat } from "./components/chat/Chat";
@@ -24,6 +25,28 @@ const TelegramPage: React.FC<TelegramPageProps> = ({
   pezzo,
   last,
 }: TelegramPageProps) => {
+  const location = useLocation();
+
+  const buildChats = (): Partial<ChatsI> => ({
+    lillaChannel: lillaChannel,
+    lillaCorp: lillaCorp,
+    rosy: rosy,
+    evilloh: evilloh,
+    pezzo: pezzo,
+  });
+
+  const buildChatStates = (nextChats: Partial<ChatsI>) =>
+    Object.keys(nextChats).reduce((acc, chatKey) => {
+      const key = chatKey as keyof ChatsI;
+      const chat = nextChats[key];
+      const messages = chat?.messages || [];
+      acc[key] = {
+        displayedMessages: messages.length > 0 ? [messages[0]] : [],
+        pendingMessages: messages.length > 1 ? messages.slice(1) : [],
+      };
+      return acc;
+    }, {} as Record<keyof ChatsI, { displayedMessages: any[]; pendingMessages: any[] }>);
+
   const [chats, setChats] = useState<Partial<ChatsI>>({
     lillaChannel: lillaChannel,
     lillaCorp: lillaCorp,
@@ -34,17 +57,18 @@ const TelegramPage: React.FC<TelegramPageProps> = ({
   const [currentChat, setCurrentChat] = useState<keyof ChatsI>(
     lillaChannel ? "lillaChannel" : "pezzo"
   );
-  const [chatStates, setChatStates] = useState(() =>
-    Object.keys(chats).reduce((acc, chatKey) => {
-      acc[chatKey] = {
-        displayedMessages: [chats[chatKey as keyof ChatsI]?.messages[0]],
-        pendingMessages:
-          chats[chatKey as keyof ChatsI]?.messages.slice(1) || [],
-      };
-      return acc;
-    }, {} as Record<keyof ChatsI, { displayedMessages: any[]; pendingMessages: any[] }>)
-  );
+  const [chatStates, setChatStates] = useState(() => buildChatStates(chats));
   const [isChatOpen, setIsChatOpen] = useState(true);
+
+  useEffect(() => {
+    const nextChats = buildChats();
+    setChats(nextChats);
+    setCurrentChat(lillaChannel ? "lillaChannel" : "pezzo");
+    setChatStates(buildChatStates(nextChats));
+    setIsChatOpen(true);
+    // We intentionally reset on route changes, not on message sends.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname]);
 
   const openChat = (chatKey: keyof ChatsI) => {
     setCurrentChat(chatKey);

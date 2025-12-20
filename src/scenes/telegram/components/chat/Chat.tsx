@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import type { ChatsI } from "../../../../shared/interfaces";
 import { userImages } from "../../../../shared/constants";
 
@@ -26,12 +26,25 @@ export const Chat = ({
   last,
 }: ChatProps) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [input, setInput] = useState("");
   const [showVideo, setShowVideo] = useState(false);
   const [startDisappearing, setStartDisappearing] = useState(false);
   const [videoTarget, setVideoTarget] = useState("/6");
 
   const intervalRef = useRef<number | null>(null);
+  const showVideoTimeoutRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    setShowVideo(false);
+    setStartDisappearing(false);
+    setVideoTarget("/6");
+    setInput("");
+    if (showVideoTimeoutRef.current) {
+      clearTimeout(showVideoTimeoutRef.current);
+      showVideoTimeoutRef.current = null;
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     setInput("");
@@ -103,7 +116,10 @@ export const Chat = ({
       if (input.toLowerCase() === "hades" && currentChat === "pezzo") {
         setVideoTarget("/6");
         setStartDisappearing(true);
-        setTimeout(() => {
+        if (showVideoTimeoutRef.current) {
+          clearTimeout(showVideoTimeoutRef.current);
+        }
+        showVideoTimeoutRef.current = setTimeout(() => {
           setShowVideo(true);
         }, 1000);
         setInput("");
@@ -113,7 +129,10 @@ export const Chat = ({
       if (input.toLowerCase() === "/timecrime" && last) {
         setVideoTarget("/lilac_carlo");
         setStartDisappearing(true);
-        setTimeout(() => {
+        if (showVideoTimeoutRef.current) {
+          clearTimeout(showVideoTimeoutRef.current);
+        }
+        showVideoTimeoutRef.current = setTimeout(() => {
           setShowVideo(true);
         }, 1000);
         setInput("");
