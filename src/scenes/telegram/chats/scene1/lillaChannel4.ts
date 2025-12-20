@@ -21,7 +21,7 @@ export const lillaChannel4 = {
       message: "ahahaha",
     },
     {
-      user: "visinoskij",
+      user: "miso",
       message: "ahahaha",
     },
     {

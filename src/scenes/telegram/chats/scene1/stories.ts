@@ -21,3 +21,11 @@ export const stories5: Story[] = [
 export const storiesPezzo: Story[] = [
   { id: 7, user: "sonrisitas", image: "/assets/sonrisitas_story.jpg" },
 ];
+
+export const stories7: Story[] = [
+  { id: 8, user: "evilloh", image: "/assets/storye1.jpg" },
+];
+
+export const stories8: Story[] = [
+  { id: 8, user: "nata", image: "/assets/ronaldino.jpg" },
+];
