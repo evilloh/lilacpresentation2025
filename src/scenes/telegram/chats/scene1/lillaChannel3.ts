@@ -94,7 +94,7 @@ export const lillaChannel3 = {
       message: "non ti basta?",
     },
     {
-      user: "carlo",
+      user: "you",
       message: "te lo diciamo per non farti buttare via soldi",
     },
     {

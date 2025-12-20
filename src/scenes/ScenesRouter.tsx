@@ -76,7 +76,7 @@ const ScenesRouter: React.FC = () => {
         <Route path="/lab" element={<Lab />} />
         <Route path="/lilac_carlo" element={<LilacCarlo />} />
         <Route
-          path="/4"
+          path="/5"
           element={
             <TelegramPage
               lillaChannel={lillaChannel5}

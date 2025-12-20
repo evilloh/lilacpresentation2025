@@ -132,9 +132,11 @@ export const Chat = ({
           (msg: { user: string; message: string }, index: number) => (
             <div
               key={index}
-              className={`message ${msg.user === "You" ? "user" : "other"}`}
+              className={`message ${
+                msg.user.toLowerCase() === "you" ? "user" : "other"
+              }`}
             >
-              {msg.user !== "You" && (
+              {msg.user.toLowerCase() !== "you" && (
                 <div className="avatar">
                   <img
                     src={
@@ -148,7 +150,7 @@ export const Chat = ({
               )}
               <div className="bubble-container">
                 <div className="bubble">
-                  {msg.user !== "You" && (
+                  {msg.user.toLowerCase() !== "you" && (
                     <div className="username">{msg.user}</div>
                   )}
                   <p dangerouslySetInnerHTML={{ __html: msg.message }}></p>

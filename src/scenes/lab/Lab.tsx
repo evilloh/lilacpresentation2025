@@ -207,7 +207,7 @@ const Lab: React.FC = () => {
 
       // Pass navigation callback to the scene
       game.registry.set("onComplete", () => {
-        navigate("/4");
+        navigate("/5");
       });
 
       return () => {
