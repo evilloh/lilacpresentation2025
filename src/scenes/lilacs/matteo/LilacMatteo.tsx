@@ -90,7 +90,7 @@ const LilacMatteo: React.FC = () => {
   }, [startDisappearing]);
 
   const handleVideoEnd = () => {
-    navigate("/9");
+    navigate("/8_nata");
   };
 
   return (
