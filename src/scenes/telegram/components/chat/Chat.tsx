@@ -15,6 +15,7 @@ interface ChatProps {
       Record<keyof ChatsI, { displayedMessages: any[]; pendingMessages: any[] }>
     >
   >;
+  last?: boolean;
 }
 
 export const Chat = ({
@@ -22,14 +23,17 @@ export const Chat = ({
   currentChat,
   chatStates,
   setChatStates,
+  last,
 }: ChatProps) => {
   const navigate = useNavigate();
   const [input, setInput] = useState("");
   const [showVideo, setShowVideo] = useState(false);
   const [startDisappearing, setStartDisappearing] = useState(false);
+  const [videoTarget, setVideoTarget] = useState("/6");
 
   const intervalRef = useRef<number | null>(null);
 
+  console.log(currentChat);
   useEffect(() => {
     setInput("");
     if (intervalRef.current) {
@@ -98,6 +102,7 @@ export const Chat = ({
   const sendMessage = () => {
     if (input.trim()) {
       if (input.toLowerCase() === "hades" && currentChat === "pezzo") {
+        setVideoTarget("/6");
         setStartDisappearing(true);
         setTimeout(() => {
           setShowVideo(true);
@@ -105,6 +110,17 @@ export const Chat = ({
         setInput("");
         return;
       }
+
+      if (input.toLowerCase() === "/timecrime" && last) {
+        setVideoTarget("/lilac_carlo");
+        setStartDisappearing(true);
+        setTimeout(() => {
+          setShowVideo(true);
+        }, 1000);
+        setInput("");
+        return;
+      }
+
       const newMessage = { user: "You", message: input };
       setChatStates((prevStates) => ({
         ...prevStates,
@@ -138,7 +154,7 @@ export const Chat = ({
   };
 
   const handleVideoEnd = () => {
-    navigate("/6");
+    navigate(videoTarget);
   };
 
   const isChatDisabled = () => {

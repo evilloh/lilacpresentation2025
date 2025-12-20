@@ -12,6 +12,7 @@ interface TelegramPageProps {
   evilloh?: ChatsI["evilloh"];
   stories?: Story[];
   pezzo?: ChatsI["pezzo"];
+  last?: boolean;
 }
 
 const TelegramPage: React.FC<TelegramPageProps> = ({
@@ -21,6 +22,7 @@ const TelegramPage: React.FC<TelegramPageProps> = ({
   stories,
   evilloh,
   pezzo,
+  last,
 }: TelegramPageProps) => {
   const [chats, setChats] = useState<Partial<ChatsI>>({
     lillaChannel: lillaChannel,
@@ -76,6 +78,7 @@ const TelegramPage: React.FC<TelegramPageProps> = ({
           currentChat={currentChat}
           chatStates={chatStates}
           setChatStates={setChatStates}
+          last={last}
         />
       </div>
     </div>

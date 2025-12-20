@@ -11,4 +11,8 @@ export const userImages = {
   pinottopoppo: "/assets/pinottopoppo.jpg",
   pinottodos: "/assets/pinottopoppo.jpg",
   sonrisitas: "/assets/sonrisitasavatar.png",
+  felipe: "/assets/felipe.jpg",
+  dia: "/assets/dia.png",
+  nit: "/assets/nit.png",
+  bigolo: "/assets/bigolo.png",
 };

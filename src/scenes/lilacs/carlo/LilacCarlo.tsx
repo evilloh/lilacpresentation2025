@@ -33,7 +33,9 @@ const LilacCarlo: React.FC = () => {
   }, [startDisappearing]);
 
   const handleVideoEnd = () => {
-    navigate("/5");
+    navigate(
+      "https://docs.google.com/spreadsheets/d/1V_YE3ux4iZMw15d9_NN5haQQyQzGFygkJ1yA0nkYTKk/edit?gid=1645018609#gid=1645018609"
+    );
   };
 
   return (
@@ -94,7 +96,6 @@ const LilacCarlo: React.FC = () => {
       </div>
       {showVideo && (
         <div className="video-container disappear">
-          <h1>In a different time...</h1>
           <video
             src="/assets/timeTravel.mp4"
             className="intro-video disappear"

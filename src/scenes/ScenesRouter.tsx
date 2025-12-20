@@ -39,6 +39,7 @@ import LilacVisinoskij from "./lilacs/visinoskij/LilacVisinoskij";
 import LilacMatteo from "./lilacs/matteo/LilacMatteo";
 import LilacNata from "./lilacs/nata/LilacNata";
 import { lillaChannel8 } from "./telegram/chats/scene1/lillaChannel8";
+import { lillaChannel9 } from "./telegram/chats/scene1/lillaChannel9";
 
 const ScenesRouter: React.FC = () => {
   return (
@@ -142,6 +143,17 @@ const ScenesRouter: React.FC = () => {
 
         <Route path="/lilac_matteo" element={<LilacMatteo />} />
         <Route path="/lilac_nata" element={<LilacNata />} />
+
+        <Route
+          path="/9"
+          element={
+            <TelegramPage
+              lillaChannel={lillaChannel9}
+              lillaCorp={lillacorp4}
+              last
+            />
+          }
+        />
       </Routes>
     </Router>
   );
