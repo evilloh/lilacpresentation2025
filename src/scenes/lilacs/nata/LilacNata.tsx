@@ -73,7 +73,7 @@ const LilacNata: React.FC = () => {
   }, [removedItems]);
 
   const handleVideoEnd = () => {
-    navigate("/10");
+    navigate("/9");
   };
 
   return (
