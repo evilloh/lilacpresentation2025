@@ -90,7 +90,7 @@ export const lillaChannel4 = {
     {
       user: "visinoskij",
       message:
-        "<a href='/lab' style='text-decoration: none; color: inherit;'><div style={{display: flex}}> <p>Si si, era pure uscito un articolo sul post a riguardo. É di qualche tempo fa, il mio collega coem al solito ha fatto casino coi lieviti</p><img src='/assets/ilpost.jpg' alt='Miso Image 1' style='width: 100%;'/></div></a>",
+        "<a href='/lab' style='text-decoration: none; color: inherit;'><div style={{display: flex}}> <p>Si si, era pure uscito un articolo sul post a riguardo. É di qualche tempo fa, il mio collega come al solito ha fatto casino coi lieviti</p><img src='/assets/ilpost.jpg' alt='Miso Image 1' style='width: 100%;'/></div></a>",
     },
   ],
 };

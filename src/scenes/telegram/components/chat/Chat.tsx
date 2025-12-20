@@ -33,7 +33,6 @@ export const Chat = ({
 
   const intervalRef = useRef<number | null>(null);
 
-  console.log(currentChat);
   useEffect(() => {
     setInput("");
     if (intervalRef.current) {

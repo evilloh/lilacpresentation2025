@@ -72,6 +72,10 @@ export const lillaChannel9 = {
       message: "é felipe",
     },
     {
+      user: "you",
+      message: "dude como va?",
+    },
+    {
       user: "evilloh",
       message: "carlo ha azzeccato il nome?!?",
     },

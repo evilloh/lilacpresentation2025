@@ -106,12 +106,22 @@ const ScenesRouter: React.FC = () => {
         />
         <Route
           path="/lilac_pezzo"
-          element={<TelegramPage pezzo={pezzoChat} stories={storiesPezzo} />}
+          element={
+            <TelegramPage
+              key="lilac_pezzo"
+              pezzo={pezzoChat}
+              stories={storiesPezzo}
+            />
+          }
         />
         <Route
           path="/6"
           element={
-            <TelegramPage lillaChannel={lillaChannel6} lillaCorp={lillacorp4} />
+            <TelegramPage
+              key="6"
+              lillaChannel={lillaChannel6}
+              lillaCorp={lillacorp4}
+            />
           }
         />
 
