@@ -45,7 +45,7 @@ export const pezzoChat = {
       message: "1. Cameron, marrone scuro, dipende",
     },
     {
-      user: "pezzo2",
+      user: "you",
       message: "3. sei arrivato alla fine fine?",
     },
     {
@@ -76,6 +76,19 @@ export const pezzoChat = {
     {
       user: "pezzo2",
       message: "quale?",
+    },
+    {
+      user: "pezzo2",
+      message: "quale carlo?",
+    },
+    {
+      user: "pezzo2",
+      message:
+        "che gioco mi consiglieresti disegnato con anime di quest'anno, 2020, action?",
+    },
+    {
+      user: "pezzo2",
+      message: "eh?",
     },
   ],
 };
